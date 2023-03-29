@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  build-application:
+    image: ${DOCKER_IMAGE}:${DOCKER_TAG}
+    container_name: build-application
+    environment:
+      - INSTALL_PATH=/builder/install
+    volumes:
+      - ./:/builder:rw
+    working_dir: /builder
+    entrypoint: /builder/scripts/build.sh
+
+  start-tcp-server:
+    image: ${DOCKER_IMAGE}:${DOCKER_TAG}
+    container_name: start-tcp-server
+    ports:
+      - "1337:1337"
+    environment:
+      - INSTALL_PATH=/builder/install
+    volumes:
+      - ./:/builder:rw
+    working_dir: /builder
+    entrypoint: /builder/scripts/run-tcp-server.sh
+
+  start-tcp-client:
+    image: ${DOCKER_IMAGE}:${DOCKER_TAG}
+    container_name: start-tcp-client
+    links:
+      - start-tcp-server
+    depends_on:
+      - start-tcp-server
+    ports:
+      - "1338:1338"
+    environment:
+      - INSTALL_PATH=/builder/install
+      - RESOURCE_PATH=/builder/resources
+    volumes:
+      - ./:/builder:rw
+      - ./resources:/resources:rw
+    working_dir: /builder
+    entrypoint: /builder/scripts/run-tcp-client.sh

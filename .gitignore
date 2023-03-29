@@ -1,0 +1,12 @@
+# ignore build files
+build
+cmake-build-debug
+
+# ignore install files
+install
+
+# keep all gitkeeps
+!*/.gitkeep
+
+# ignore idea
+.idea

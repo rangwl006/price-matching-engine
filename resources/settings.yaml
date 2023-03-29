@@ -1,0 +1,4 @@
+client:
+  ip: "172.23.0.2"
+  port: "1337"
+  data: "/builder/resources/data.txt"
