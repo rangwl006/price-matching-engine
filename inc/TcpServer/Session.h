@@ -22,10 +22,9 @@ namespace component::server
       };
       
       void Start();
-      
       asio::ip::tcp::socket& GetSocket() { return m_socket; };
       
-      ~Session() { std::cout << "terminated" << std::endl; };
+      ~Session() { std::cout << "Session " << this << " terminated" << std::endl; };
       
     private:
       

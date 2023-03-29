@@ -96,10 +96,11 @@ namespace component::server
       std::cout << "Connection timed out, closing connection" << std::endl;
       m_socket.close();
       if (! m_socket.is_open())
+      {
         std::cout << "socket is closed" << std::endl;
+      }
     }
   }
-  
   
 }
 

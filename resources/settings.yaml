@@ -1,4 +1,8 @@
 client:
-  ip: "172.23.0.2"
+  ip: "172.28.0.2"
   port: "1337"
   data: "/builder/resources/data.txt"
+server:
+  ip: "172.23.0.2"
+  ipv: 4 # 4: for ipv4, 6: for ipv6
+  port: "1337"

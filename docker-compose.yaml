@@ -18,6 +18,7 @@ services:
       - "1337:1337"
     environment:
       - INSTALL_PATH=/builder/install
+      - RESOURCE_PATH=/builder/resources
     volumes:
       - ./:/builder:rw
     working_dir: /builder

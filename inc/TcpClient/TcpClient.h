@@ -20,14 +20,11 @@ namespace component::client
       ~TcpClient();
       
       int Run();
-      
-      int FeedData();
-      
-      void StartReadData();
     
     private:
-      
+      int FeedData();
       void ReadData(const asio::error_code error, size_t bytesTransferred);
+      void StartReadData();
       
       std::string m_ip;
       std::string m_port;
